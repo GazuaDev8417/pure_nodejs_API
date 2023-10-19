@@ -1,13 +1,17 @@
 import http from 'http'
-import { createUser } from './endpooints/createUser.js'
-import { getUsers } from './endpooints/getUsers.js'
-import { updateUser } from './endpooints/updateUser.js'
-import { deleteUser } from './endpooints/deleteUser.js'
+import { createUser } from './endpoints/createUser.js'
+import { getUsers } from './endpoints/getUsers.js'
+import { updateUser } from './endpoints/updateUser.js'
+import { deleteUser } from './endpoints/deleteUser.js'
 
 
 const server = http.createServer((req, res)=>{
     if(req.method === 'POST' && req.url === '/user'){
         createUser(req, res)
+    }
+
+    if(req.method === 'POST' && req.url === '/login'){
+        login(req, res)
     }
 
     if(req.method === 'GET' && req.url === '/users'){

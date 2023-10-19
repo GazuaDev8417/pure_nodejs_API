@@ -1,4 +1,5 @@
 import con from '../database/connection.js'
+import { encrypt } from '../services/encryptAndDecryptKey.js'
 
 
 export async function createUser(req, res){
@@ -15,12 +16,13 @@ export async function createUser(req, res){
                 const id = `${Date.now()}-${Math.random().toString(16)}`
                 const sql = 'INSERT INTO gazuadev(id, name, email, password) VALUES(?, ?, ?, ?)'
                 const checkUser = 'SELECT * FROM gazuadev WHERE email = ?'
-                const values = [id, user.name, user.email, user.password]
+                const hash = encrypt(user.password)
+                const values = [id, user.name, user.email, hash]
                 
                 const [rows] = await con.promise().query(checkUser, user.email)
                 
                 if(rows.length > 0){
-                    res.statusCode = 404
+                    res.statusCode = 403
                     res.setHeader('Content-Type', 'application/json')
                     res.write(JSON.stringify('Usuário já cadastrado.'))
                     res.end()
