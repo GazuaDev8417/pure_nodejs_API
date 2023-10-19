@@ -1,0 +1,24 @@
+POST http://localhost:3003/user
+Content-Type: application/json
+
+{
+    "name": "Gazua",
+    "email": "eupublicomsm@gmail.com",
+    "password": "Alfaromeo*021"
+}
+
+###
+GET http://localhost:3003/users
+
+###
+PUT http://localhost:3003/user/1697723685553-0.bd139c2a190be
+Content-Type: application/json
+
+{
+    "name": "Usuário alterado",
+    "email": "alterado@gmail.com",
+    "password": "Alfaromeo*021"
+}
+
+###
+DELETE http://localhost:3003/user/1697723685553-0.bd139c2a190be
