@@ -1,11 +1,13 @@
 import mysql from 'mysql2'
+import { config } from 'dotenv'
 
+config()
 
 const con = mysql.createConnection({
-    host: '35.226.146.116',
-    user: '2147335-flamarion-silva',
-    password: 'MjxyWqJsw2kqMP9LS9dh',
-    database: 'lovelace-2147335-flamarion-silva'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_SCHEMA
 })
 
 con.connect(error=>{
