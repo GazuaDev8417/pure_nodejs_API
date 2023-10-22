@@ -1,4 +1,4 @@
 # API nodejs
 
-API implementada usadando somente nodejs sem nenhuma biblioteca ou framework adicional.
+API implementada usando somente nodejs sem nenhuma biblioteca ou framework adicional.
 
